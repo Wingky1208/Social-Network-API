@@ -1,0 +1,26 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "social network application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wingky1208/Social-Network-API.git"
+  },
+  "author": "wingky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wingky1208/Social-Network-API/issues"
+  },
+  "homepage": "https://github.com/Wingky1208/Social-Network-API#readme",
+  "dependencies": {
+    "api-routes": "^0.2.1",
+    "express": "^4.18.1",
+    "moment": "^2.29.4",
+    "mongoose": "^6.4.4"
+  }
+}

@@ -24,16 +24,17 @@ const thoughtController = {
     createThought(req, res) {
         Thought.create(req.body)
             .then((dbThoughtData) => {
+                //console.log(req.body);
                 return User.findOneAndUpdate(
                     {
                         _id: req.body.userId
                     },
                     {
-                        $push: { thoughts: dbThoughtData._id }
+                        $addToSet: { thoughts: dbThoughtData._id }
                     },
                     {
-
-                        new: true
+                        runValidators: true,
+                        new: true,
                     }
                 );
             })
@@ -108,7 +109,7 @@ const thoughtController = {
         Thought.findOneAndUpdate({ _id: req.params.thoughtId },
             {
                 $addToSet:
-                    { reactions: req.params.reactionId }
+                    { reactions: req.body }
             },
             {
                 runValidators: true,
@@ -130,7 +131,7 @@ const thoughtController = {
     removeReaction(req, res) {
         Thought.findOneAndUpdate({ _id: req.params.thoughtId },
             {
-                $pull: { reaction: req.params.reactionId }
+                $pull: { reactions: { reactionId: req.params.reactionId } }
             },
             {
                 runValidators: true,
@@ -150,5 +151,5 @@ const thoughtController = {
 };
 
 
-
+module.exports = thoughtController;
 
